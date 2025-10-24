@@ -83,7 +83,6 @@ public abstract class Producto {
 
     //METODOS
     public void disminuirCantidad(int cantidad){
-
         this.cantidadDisponible -= cantidad;
     }
 
