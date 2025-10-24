@@ -91,4 +91,7 @@ public abstract class Producto {
         return this.cantidadDisponible < 10;
     }
 
+    @Override
+    public abstract String toString();
+
 }
