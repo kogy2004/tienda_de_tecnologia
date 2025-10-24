@@ -40,6 +40,6 @@ public class Cliente {
     public String toString() {
         return  "Documento= " + documento +
                 "Nombre= " + nombre +
-                "FechaNacimiento= " + fechaNacimiento;
+                "Fecha Nacimiento= " + fechaNacimiento;
     }
 }

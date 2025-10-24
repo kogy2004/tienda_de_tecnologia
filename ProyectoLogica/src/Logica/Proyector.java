@@ -21,7 +21,7 @@ public class Proyector extends Producto{
                 "\nMarca: " + marca +
                 "\nColor: " + color +
                 "\nResolución: " + resolucion +
-                "\nPrecio=: " + precio+
+                "\nPrecio: " + precio+
                 "\nCantidad disponible: "+ cantidadDisponible+
                 "\nTipo de uso: " + tipoUso +
                 "\nTecnología de visualización: " + tecnologiaVisualizacion;
