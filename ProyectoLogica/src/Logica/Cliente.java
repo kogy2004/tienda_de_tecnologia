@@ -38,8 +38,8 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return  "Documento= " + documento +
-                "Nombre= " + nombre +
-                "Fecha Nacimiento= " + fechaNacimiento;
+        return  "\nDocumento= " + documento +
+                "\nNombre= " + nombre +
+                "\nFecha Nacimiento= " + fechaNacimiento;
     }
 }

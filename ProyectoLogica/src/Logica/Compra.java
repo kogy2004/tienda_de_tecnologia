@@ -87,11 +87,11 @@ public class Compra {
 
     @Override
     public String toString() {
-        return  "Fecha: " + fecha +
-                "Cliente: " + cliente +
-                "Productos Comprados: " + productosComprados +
-                "Cantidades:" + cantidades +
-                "Total Compra: " + totalCompra +
-                "Valor A pagar: " + valorApagar ;
+        return  "\nFecha: " + fecha +
+                "\nCliente: " + cliente +
+                "\nProductos Comprados: " + productosComprados +
+                "\nCantidades:" + cantidades +
+                "\nTotal Compra: " + totalCompra +
+                "\nValor A pagar: " + valorApagar ;
     }
 }
