@@ -107,4 +107,6 @@ public class Tienda {
     public void setCompras(ArrayList<Compra> compras) {
         this.compras = compras;
     }
+    
+    
 }
