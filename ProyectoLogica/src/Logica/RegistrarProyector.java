@@ -47,8 +47,6 @@ public class RegistrarProyector extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         tecnologiaVisualizacion = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N

@@ -1,13 +1,11 @@
 
 package Logica;
 
-import GUI.GUIPrincipal;
-
 
 public class Main {
     public static void main(String[] args) {
         
-        GUIPrincipal pantalla = new GUIPrincipal();
+        GuiPrincipal pantalla = new GuiPrincipal();
         pantalla.setVisible(true);
         pantalla.setLocationRelativeTo(null);
     }
