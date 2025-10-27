@@ -42,6 +42,10 @@ public class RegistrarProyector extends javax.swing.JFrame {
         resolucion = new javax.swing.JComboBox<>();
         sistemaOperativo = new javax.swing.JComboBox<>();
         pulgadas = new javax.swing.JComboBox<>();
+        jLabel9 = new javax.swing.JLabel();
+        tipoUso = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        tecnologiaVisualizacion = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,6 +82,19 @@ public class RegistrarProyector extends javax.swing.JFrame {
 
         pulgadas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10 A 32", "40 A 49", "50 A 59", "60 A 75", "76 O MAS" }));
 
+        jLabel9.setText("TIPO DE USO:");
+
+        tipoUso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HOGAR", "EMPRESA", " " }));
+        tipoUso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tipoUsoActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setText("TECNOLOGIA DE VISUALIZACION:");
+
+        tecnologiaVisualizacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LCD", " LED ", " DLP" }));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -108,15 +125,19 @@ public class RegistrarProyector extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
-                                    .addComponent(jLabel8))
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel10))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(sistemaOperativo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(pulgadas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
+                                    .addComponent(pulgadas, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(tipoUso, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(tecnologiaVisualizacion, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(141, 141, 141)
                         .addComponent(jLabel1)))
-                .addContainerGap(124, Short.MAX_VALUE))
+                .addContainerGap(208, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,7 +172,15 @@ public class RegistrarProyector extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(pulgadas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(tipoUso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(tecnologiaVisualizacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -171,6 +200,10 @@ public class RegistrarProyector extends javax.swing.JFrame {
     private void codigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_codigoActionPerformed
+
+    private void tipoUsoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tipoUsoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tipoUsoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -211,6 +244,7 @@ public class RegistrarProyector extends javax.swing.JFrame {
     private javax.swing.JTextField codigo;
     private javax.swing.JTextField color;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -218,11 +252,14 @@ public class RegistrarProyector extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JComboBox<String> marca;
     private javax.swing.JComboBox<String> pulgadas;
     private javax.swing.JTextField referencia;
     private javax.swing.JComboBox<String> resolucion;
     private javax.swing.JComboBox<String> sistemaOperativo;
+    private javax.swing.JComboBox<String> tecnologiaVisualizacion;
+    private javax.swing.JComboBox<String> tipoUso;
     // End of variables declaration//GEN-END:variables
 }
