@@ -90,6 +90,11 @@ public class RegistrarProyector extends javax.swing.JFrame {
         });
 
         comboResolucion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LED", "NANOCELL", "OLED", "QLED", "MINILED", "QNED", " " }));
+        comboResolucion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboResolucionActionPerformed(evt);
+            }
+        });
 
         comboSistema.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ANDROID TV", "GOOGLE TV", "TIZEN", "WEB OS", "ROKU TV" }));
 
@@ -310,6 +315,10 @@ public class RegistrarProyector extends javax.swing.JFrame {
         comboTipoUso.setSelectedIndex(0);
         comboTecnologia.setSelectedIndex(0);
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void comboResolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboResolucionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboResolucionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
