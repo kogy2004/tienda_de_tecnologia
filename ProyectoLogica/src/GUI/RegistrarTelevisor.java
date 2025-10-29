@@ -8,7 +8,7 @@ import javax.swing.*;
 public class RegistrarTelevisor extends javax.swing.JFrame {
     
     private Tienda tienda;
-    public RegistrarTelevisor() {
+    public RegistrarTelevisor(Tienda tienda) {
         initComponents();
         this.tienda = tienda;
     }
@@ -38,7 +38,7 @@ public class RegistrarTelevisor extends javax.swing.JFrame {
         txtCantidad = new javax.swing.JTextField();
         btnGuardar = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        comboTipoPanta = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,7 +100,7 @@ public class RegistrarTelevisor extends javax.swing.JFrame {
 
         jLabel11.setText("TIPO PANTALLA:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LED", "NANOCELL", "OLED", "QLED", "MINILED", "QNED", " " }));
+        comboTipoPanta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LED", "NANOCELL", "OLED", "QLED", "MINILED", "QNED", " " }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -150,7 +150,7 @@ public class RegistrarTelevisor extends javax.swing.JFrame {
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel11)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(comboTipoPanta, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(jPanel2Layout.createSequentialGroup()
                                         .addComponent(jLabel5)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -189,7 +189,7 @@ public class RegistrarTelevisor extends javax.swing.JFrame {
                 .addGap(29, 29, 29)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(comboTipoPanta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(comboResolucion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -247,6 +247,7 @@ public class RegistrarTelevisor extends javax.swing.JFrame {
         String resolucion = comboResolucion.getSelectedItem().toString();
         String sistema = comboSistema.getSelectedItem().toString();
         String pulgadas = comboPulgadas.getSelectedItem().toString();
+        String tipoPantalla = comboTipoPanta.getSelectedItem().toString();
 
         // 🟡 Pide precio y cantidad (pueden ser JTextField también)
         double precio = Double.parseDouble(txtPrecio.getText());
@@ -261,9 +262,9 @@ public class RegistrarTelevisor extends javax.swing.JFrame {
             televisor.setResolucion(resolucion);
             televisor.setPrecio(precio);
             televisor.setCantidadDisponible(cantidad);
-            televisor.setTamanioPantalla(tamanioPantalla);
+            televisor.setTamanioPantalla(pulgadas);
             televisor.setTipoPantalla(tipoPantalla);
-            televisor.setSistemaOperativo(sistemaOperativo);
+            televisor.setSistemaOperativo(sistema);
 
         // 🟢 Registrar en tienda
         tienda.registrarProducto(televisor);
@@ -294,7 +295,7 @@ public class RegistrarTelevisor extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboPulgadas;
     private javax.swing.JComboBox<String> comboResolucion;
     private javax.swing.JComboBox<String> comboSistema;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> comboTipoPanta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

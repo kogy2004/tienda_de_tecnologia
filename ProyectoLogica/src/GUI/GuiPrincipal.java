@@ -102,7 +102,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void registrarTelevisorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarTelevisorActionPerformed
-       //new RegistrarTelevisor(tienda).setVisible(true);
+       new RegistrarTelevisor(tienda).setVisible(true);
     }//GEN-LAST:event_registrarTelevisorActionPerformed
         
     private void registrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarClienteActionPerformed
