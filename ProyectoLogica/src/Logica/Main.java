@@ -1,6 +1,8 @@
 
 package Logica;
 
+import GUI.GuiPrincipal;
+
 
 public class Main {
     public static void main(String[] args) {
