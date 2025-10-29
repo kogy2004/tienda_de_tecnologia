@@ -9,12 +9,14 @@ public class Televisor extends Producto {
     public Televisor() {
     }
 
-    public Televisor(String codigo, String referencia, String marca, String color, String resolucion, double precio, int cantidadDisponible, String tamanioPantalla, String tipoPantalla, String sistemaOperativo) {
-        super(codigo, referencia, marca, color, resolucion, precio, cantidadDisponible);
+    public Televisor(String tamanioPantalla, String tipoPantalla, String sistemaOperativo, String codigo, String referecia, String marca, String color, String resolucion, double precio, int cantidadDisponible) {
+        super(codigo, referecia, marca, color, resolucion, precio, cantidadDisponible);
         this.tamanioPantalla = tamanioPantalla;
         this.tipoPantalla = tipoPantalla;
         this.sistemaOperativo = sistemaOperativo;
     }
+
+    
 
     @Override
     public String toString() {

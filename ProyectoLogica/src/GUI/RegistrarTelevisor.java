@@ -244,7 +244,7 @@ public class RegistrarTelevisor extends javax.swing.JFrame {
             televisor.setColor(color);
             televisor.setResolucion(resolucion);
             televisor.setPrecio(precio);
-            televisor.setCantidadDisponible(cantidad); // o setCantidad según tu nombre
+            televisor.setCantidadDisponible(cantidad);
             televisor.setTamanioPantalla(tamanioPantalla);
             televisor.setTipoPantalla(tipoPantalla);
             televisor.setSistemaOperativo(sistemaOperativo);
