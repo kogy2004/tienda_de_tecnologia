@@ -31,6 +31,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
         registrarTelevisor = new javax.swing.JMenuItem();
         registrarCliente = new javax.swing.JMenuItem();
         registrarProyector = new javax.swing.JMenuItem();
+        registrarCompra = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,6 +84,14 @@ public class GuiPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(registrarProyector);
 
+        registrarCompra.setText(" Registrar Compra");
+        registrarCompra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarCompraActionPerformed(evt);
+            }
+        });
+        jMenu2.add(registrarCompra);
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -113,6 +122,10 @@ public class GuiPrincipal extends javax.swing.JFrame {
        new RegistrarProyector(tienda).setVisible(true);
     }//GEN-LAST:event_registrarProyectorActionPerformed
 
+    private void registrarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarCompraActionPerformed
+        new RegistrarCompras(tienda).setVisible(true);
+    }//GEN-LAST:event_registrarCompraActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -120,6 +133,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuItem registrarCliente;
+    private javax.swing.JMenuItem registrarCompra;
     private javax.swing.JMenuItem registrarProyector;
     private javax.swing.JMenuItem registrarTelevisor;
     // End of variables declaration//GEN-END:variables

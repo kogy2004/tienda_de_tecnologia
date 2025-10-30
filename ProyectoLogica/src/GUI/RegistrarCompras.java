@@ -4,17 +4,44 @@
  */
 package GUI;
 
-/**
- *
- * @author salas
- */
-public class RegistrarCompras extends javax.swing.JFrame {
+import Logica.Cliente;
+import Logica.Producto;
+import Logica.Tienda;
+import Logica.Compra;
 
-    /**
-     * Creates new form RegistrarCompras
-     */
-    public RegistrarCompras() {
+import java.awt.event.ActionEvent;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+
+public class RegistrarCompras extends javax.swing.JFrame {
+    
+    private Tienda tienda;
+    private ArrayList<Producto> productosSeleccionados;
+    private ArrayList<Integer> cantidadesSeleccionadas;
+    private double totalCompra;
+    
+    public RegistrarCompras(Tienda tienda) {
         initComponents();
+        this.tienda = tienda;
+        this.productosSeleccionados = new ArrayList<>();
+        this.cantidadesSeleccionadas = new ArrayList<>();
+        this.totalCompra = 0;
+        cargarClientes();
+        cargarProductos();
+    }
+    
+    private void cargarClientes() {
+        seleccionarCliente.removeAllItems();
+        for (Cliente cliente : tienda.getClientes()) {
+            seleccionarCliente.addItem(cliente.getNombre());
+        }
+    }
+    
+    private void cargarProductos() {
+        seleccionarProducto.removeAllItems();
+        for (Producto producto : tienda.getProductos()) {
+            seleccionarProducto.addItem(producto.getReferencia());
+        }
     }
 
     /**
@@ -42,8 +69,6 @@ public class RegistrarCompras extends javax.swing.JFrame {
         guardarCompra = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         fecha = new javax.swing.JTextField();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
 
@@ -197,17 +222,156 @@ public class RegistrarCompras extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void totalActionPerformed(java.awt.event.ActionEvent evt) {
+        // Este método no necesita implementación ya que el campo es de solo lectura
+    }
+    
+    private void seleccionarClienteActionPerformed(java.awt.event.ActionEvent evt) {
+        // Actualizar el descuento si cambia el cliente
+        if (totalCompra > 0) {
+            Cliente clienteSeleccionado = null;
+            String nombreCliente = seleccionarCliente.getSelectedItem().toString();
+            for (Cliente c : tienda.getClientes()) {
+                if (c.getNombre().equals(nombreCliente)) {
+                    clienteSeleccionado = c;
+                    break;
+                }
+            }
+            
+            if (clienteSeleccionado != null && clienteSeleccionado.esCumpleanios(fecha.getText())) {
+                double totalConDescuento = totalCompra * 0.8; // 20% de descuento
+                totalDescuento.setText(String.valueOf(totalConDescuento));
+            } else {
+                totalDescuento.setText(String.valueOf(totalCompra));
+            }
+        }
+    }
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    private void fechaActionPerformed(java.awt.event.ActionEvent evt) {
+        // Actualizar el descuento si cambia la fecha
+        seleccionarClienteActionPerformed(evt);
+    }
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    private void guardarCompraActionPerformed(java.awt.event.ActionEvent evt) {
+        try {
+            // Validar que haya productos seleccionados
+            if (productosSeleccionados.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No hay productos seleccionados");
+                return;
+            }
+
+            // Validar que se haya seleccionado un cliente
+            if (seleccionarCliente.getSelectedItem() == null || seleccionarCliente.getSelectedItem().toString().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Por favor seleccione un cliente");
+                return;
+            }
+
+            // Validar que la fecha sea válida
+            String fechaCompra = fecha.getText();
+            if (fechaCompra.equals("DD/MM/YY") || fechaCompra.trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Por favor ingrese una fecha válida");
+                return;
+            }
+
+            // Buscar el cliente seleccionado
+            String nombreCliente = seleccionarCliente.getSelectedItem().toString();
+            Cliente clienteSeleccionado = null;
+            for (Cliente c : tienda.getClientes()) {
+                if (c.getNombre().equals(nombreCliente)) {
+                    clienteSeleccionado = c;
+                    break;
+                }
+            }
+
+            if (clienteSeleccionado != null) {
+                // Crear la nueva compra
+                Compra nuevaCompra = new Compra(
+                    fechaCompra,
+                    clienteSeleccionado,
+                    new ArrayList<>(productosSeleccionados),
+                    new ArrayList<>(cantidadesSeleccionadas),
+                    totalCompra,
+                    Double.parseDouble(totalDescuento.getText())
+                );
+
+                // Actualizar el inventario
+                for (int i = 0; i < productosSeleccionados.size(); i++) {
+                    Producto p = productosSeleccionados.get(i);
+                    int cant = cantidadesSeleccionadas.get(i);
+                    p.disminuirCantidad(cant);
+                }
+
+                // Registrar la compra en la tienda
+                tienda.registrarCompra(nuevaCompra);
+
+                // Limpiar todos los campos
+                productosSeleccionados.clear();
+                cantidadesSeleccionadas.clear();
+                totalCompra = 0;
+                total.setText("");
+                totalDescuento.setText("");
+                cantidad.setText("");
+                fecha.setText("DD/MM/YY");
+                seleccionarCliente.setSelectedIndex(0);
+                seleccionarProducto.setSelectedIndex(0);
+
+                JOptionPane.showMessageDialog(this, "Compra registrada exitosamente");
+            } else {
+                JOptionPane.showMessageDialog(this, "Error: Cliente no encontrado");
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al registrar la compra: " + e.getMessage());
+        }
+    }
+
+    private void agregarProductoActionPerformed(java.awt.event.ActionEvent evt) {
+        try {
+            String referencia = seleccionarProducto.getSelectedItem().toString();
+            int cantidadSeleccionada = Integer.parseInt(cantidad.getText());
+        
+        Producto productoSeleccionado = null;
+        for (Producto p : tienda.getProductos()) {
+            if (p.getReferencia().equals(referencia)) {
+                productoSeleccionado = p;
+                break;
+            }
+        }
+        
+        if (productoSeleccionado != null) {
+            if (cantidadSeleccionada <= productoSeleccionado.getCantidadDisponible()) {
+                productosSeleccionados.add(productoSeleccionado);
+                cantidadesSeleccionadas.add(cantidadSeleccionada);
+                totalCompra += productoSeleccionado.getPrecio() * cantidadSeleccionada;
+                
+                total.setText(String.valueOf(totalCompra));
+                cantidad.setText("");
+                
+                // Calcular descuento si es el cumpleaños del cliente
+                Cliente clienteSeleccionado = null;
+                String nombreCliente = seleccionarCliente.getSelectedItem().toString();
+                for (Cliente c : tienda.getClientes()) {
+                    if (c.getNombre().equals(nombreCliente)) {
+                        clienteSeleccionado = c;
+                        break;
+                    }
+                }
+                
+                if (clienteSeleccionado != null && clienteSeleccionado.esCumpleanios(fecha.getText())) {
+                    double totalConDescuento = totalCompra * 0.8; // 20% de descuento
+                    totalDescuento.setText(String.valueOf(totalConDescuento));
+                } else {
+                    totalDescuento.setText(String.valueOf(totalCompra));
+                }
+                
+                JOptionPane.showMessageDialog(this, "Producto agregado correctamente");
+            } else {
+                JOptionPane.showMessageDialog(this, "No hay suficiente cantidad disponible");
+            }
+        }
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Por favor ingrese una cantidad válida");
+    }
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton agregarProducto;
