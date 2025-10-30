@@ -31,7 +31,11 @@ public class GuiPrincipal extends javax.swing.JFrame {
         registrarTelevisor = new javax.swing.JMenuItem();
         registrarCliente = new javax.swing.JMenuItem();
         registrarProyector = new javax.swing.JMenuItem();
+
         registrarCompra = new javax.swing.JMenuItem();
+
+        jMenuItem2 = new javax.swing.JMenuItem();
+
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -92,6 +96,15 @@ public class GuiPrincipal extends javax.swing.JFrame {
         });
         jMenu2.add(registrarCompra);
 
+        jMenuItem2.setText("Datos Recolectados");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem2);
+
+
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -125,12 +138,16 @@ public class GuiPrincipal extends javax.swing.JFrame {
     private void registrarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarCompraActionPerformed
         new RegistrarCompras(tienda).setVisible(true);
     }//GEN-LAST:event_registrarCompraActionPerformed
-
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        new DatosRecolectados().setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JMenuItem registrarCliente;
     private javax.swing.JMenuItem registrarCompra;
