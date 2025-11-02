@@ -11,7 +11,7 @@ public class Compra {
     private double totalCompra;
     private double valorApagar;
 
-    public Compra(String fecha, Cliente cliente, ArrayList<Producto> productos, ArrayList<Integer> cantidades, double totalCompra, double valorApagar) {
+    public Compra(String fecha, Cliente cliente) {
         this.fecha = fecha;
         this.cliente = cliente;
         this.productosComprados = new ArrayList<>();
@@ -21,10 +21,12 @@ public class Compra {
     }
 
     public void agregarProducto(Producto producto, int cantidad){
+        if (cantidad > producto.getCantidadDisponible()) {
+            throw new IllegalArgumentException("No hay suficiente stock disponible. Stock actual: " + producto.getCantidadDisponible());
+        }
         productosComprados.add(producto);
         cantidades.add(cantidad);
-        totalCompra += producto.getPrecio()*cantidad;
-
+        totalCompra += producto.getPrecio() * cantidad;
         producto.disminuirCantidad(cantidad);
     }
 

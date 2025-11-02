@@ -10,8 +10,29 @@ public class RegistrarClientes extends javax.swing.JFrame {
 
     private Tienda tienda;
     public RegistrarClientes(Tienda tienda) {
-         initComponents();
+        initComponents();
         this.tienda = tienda;
+        
+        // Configurar el formato de fecha como placeholder y tooltip
+        txtFecha.setToolTipText("Formato: DD/MM/YYYY");
+        txtFecha.setText("");
+        
+        // Agregar un focusListener para manejar el placeholder
+        txtFecha.addFocusListener(new java.awt.event.FocusListener() {
+            @Override
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                if (txtFecha.getText().equals("DD/MM/YYYY")) {
+                    txtFecha.setText("");
+                }
+            }
+
+            @Override
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                if (txtFecha.getText().isEmpty()) {
+                    txtFecha.setText("DD/MM/YYYY");
+                }
+            }
+        });
     }
 
 
@@ -132,22 +153,71 @@ public class RegistrarClientes extends javax.swing.JFrame {
         txtFecha.setText("");
     }//GEN-LAST:event_LimpiarActionPerformed
 
+    private boolean validarFecha(String fecha) {
+        if (fecha.equals("DD/MM/YYYY") || fecha.isEmpty()) {
+            return false;
+        }
+        try {
+            String[] partes = fecha.split("/");
+            if (partes.length != 3) return false;
+            
+            int dia = Integer.parseInt(partes[0]);
+            int mes = Integer.parseInt(partes[1]);
+            int anio = Integer.parseInt(partes[2]);
+            
+            if (dia < 1 || dia > 31) return false;
+            if (mes < 1 || mes > 12) return false;
+            if (anio < 1900 || anio > 2025) return false;
+            
+            // Validación adicional para meses con 30 días
+            if ((mes == 4 || mes == 6 || mes == 9 || mes == 11) && dia > 30) return false;
+            
+            // Validación para febrero
+            if (mes == 2) {
+                boolean esBisiesto = (anio % 4 == 0 && anio % 100 != 0) || (anio % 400 == 0);
+                if (esBisiesto && dia > 29) return false;
+                if (!esBisiesto && dia > 28) return false;
+            }
+            
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-
-        String documento = txtDocumento.getText();
-        String nombre = txtNombre.getText();
-        String fechaNacimiento = txtFecha.getText();
-
-        if (documento.isEmpty() || nombre.isEmpty() || fechaNacimiento.isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Por favor complete todos los campos.");
-        return;
+        String documento = txtDocumento.getText().trim();
+        String nombre = txtNombre.getText().trim();
+        String fechaNacimiento = txtFecha.getText().trim();
+        
+        // Validaciones
+        if (documento.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El documento no puede estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            txtDocumento.requestFocus();
+            return;
+        }
+        
+        if (nombre.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "El nombre no puede estar vacío", "Error", JOptionPane.ERROR_MESSAGE);
+            txtNombre.requestFocus();
+            return;
+        }
+        
+        if (!validarFecha(fechaNacimiento)) {
+            JOptionPane.showMessageDialog(this, "Por favor ingrese una fecha válida en formato DD/MM/YYYY", "Error", JOptionPane.ERROR_MESSAGE);
+            txtFecha.requestFocus();
+            return;
         }
 
-        Cliente cliente = new Cliente(documento, nombre, fechaNacimiento);
-
-        tienda.registrarCliente(cliente);
-
-        JOptionPane.showMessageDialog(this, "Cliente registrado correctamente.");
+        try {
+            Cliente cliente = new Cliente(documento, nombre, fechaNacimiento);
+            tienda.registrarCliente(cliente);
+            JOptionPane.showMessageDialog(this, "Cliente registrado exitosamente");
+            dispose();
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al registrar el cliente: " + e.getMessage(), 
+                                       "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
 

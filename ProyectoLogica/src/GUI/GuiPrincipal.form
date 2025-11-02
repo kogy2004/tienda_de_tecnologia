@@ -9,14 +9,6 @@
             <Property name="text" type="java.lang.String" value="Menu"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="registrarTelevisor">
-              <Properties>
-                <Property name="text" type="java.lang.String" value=" Registrar Televisor"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registrarTelevisorActionPerformed"/>
-              </Events>
-            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="registrarCliente">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Registrar Cliente"/>
@@ -25,9 +17,17 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registrarClienteActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="registrarTelevisor">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Registrar Televisor"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registrarTelevisorActionPerformed"/>
+              </Events>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="registrarProyector">
               <Properties>
-                <Property name="text" type="java.lang.String" value=" Registrar Proyector"/>
+                <Property name="text" type="java.lang.String" value="Registrar Proyector"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registrarProyectorActionPerformed"/>
@@ -35,7 +35,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="registrarCompra">
               <Properties>
-                <Property name="text" type="java.lang.String" value=" Registrar Compra"/>
+                <Property name="text" type="java.lang.String" value="Registrar Compra"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registrarCompraActionPerformed"/>

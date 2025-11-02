@@ -20,6 +20,11 @@ public class RegistrarCompras extends javax.swing.JFrame {
     private ArrayList<Integer> cantidadesSeleccionadas;
     private double totalCompra;
     
+    private String obtenerFechaActual() {
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy");
+        return sdf.format(new java.util.Date());
+    }
+    
     public RegistrarCompras(Tienda tienda) {
         initComponents();
         this.tienda = tienda;
@@ -28,6 +33,8 @@ public class RegistrarCompras extends javax.swing.JFrame {
         this.totalCompra = 0;
         cargarClientes();
         cargarProductos();
+        fecha.setText(obtenerFechaActual());
+        fecha.setEditable(false);
     }
     
     private void cargarClientes() {
@@ -287,11 +294,7 @@ public class RegistrarCompras extends javax.swing.JFrame {
                 // Crear la nueva compra
                 Compra nuevaCompra = new Compra(
                     fechaCompra,
-                    clienteSeleccionado,
-                    new ArrayList<>(productosSeleccionados),
-                    new ArrayList<>(cantidadesSeleccionadas),
-                    totalCompra,
-                    Double.parseDouble(totalDescuento.getText())
+                    clienteSeleccionado
                 );
 
                 // Actualizar el inventario

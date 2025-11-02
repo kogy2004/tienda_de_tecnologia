@@ -28,25 +28,52 @@ public class Tienda {
     }
 
 
-    //Cantidad de elemntos en el ArrayList de los productos reistrados
+    //Métodos para contar los productos por tipo
     public int cantidadTotalProductos() {
         return productos.size();
     }
 
+    public int cantidadTelevisores() {
+        int count = 0;
+        for (Producto p : productos) {
+            if (p instanceof Televisor) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    public int cantidadProyectores() {
+        int count = 0;
+        for (Producto p : productos) {
+            if (p instanceof Proyector) {
+                count++;
+            }
+        }
+        return count;
+    }
+
 
     public double promedioPorMarca(String marca) {
+        System.out.println("Calculando promedio para marca: " + marca); // Debug
         double suma = 0;
         int contador = 0;
         for (Producto p : productos) {
-            if (p.getMarca().equalsIgnoreCase(marca)) {
+            System.out.println("Producto encontrado - Marca: " + p.getMarca()); // Debug
+            if (p.getMarca() != null && marca != null && 
+                p.getMarca().trim().equalsIgnoreCase(marca.trim())) {
                 suma += p.getPrecio();
                 contador++;
+                System.out.println("Coincidencia encontrada - Precio: " + p.getPrecio()); // Debug
             }
         }
+        System.out.println("Total productos de la marca: " + contador); // Debug
         if (contador == 0) {
-            return 0; // evita dividir entre cero
+            return 0;
         }
-        return suma / contador;
+        double promedio = suma / contador;
+        System.out.println("Promedio calculado: " + promedio); // Debug
+        return promedio;
     }
 
     public double porcentajeTelevisores() {
@@ -94,6 +121,16 @@ public class Tienda {
 
     public ArrayList<Compra> getCompras() {
         return compras;
+    }
+
+    public ArrayList<Producto> getProductosBajoStock() {
+        ArrayList<Producto> bajoStock = new ArrayList<>();
+        for (Producto p : productos) {
+            if (p.alertaBajoStock()) {
+                bajoStock.add(p);
+            }
+        }
+        return bajoStock;
     }
 
     public void setProductos(ArrayList<Producto> productos) {

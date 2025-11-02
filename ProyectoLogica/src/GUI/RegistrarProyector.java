@@ -81,7 +81,7 @@ public class RegistrarProyector extends javax.swing.JFrame {
             }
         });
 
-        comboMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SAMSUNG", "LG", "KALLEY", " " }));
+        comboMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SAMSUNG", "LG", "KALLEY" }));
 
         txtColor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,7 +89,7 @@ public class RegistrarProyector extends javax.swing.JFrame {
             }
         });
 
-        comboResolucion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LED", "NANOCELL", "OLED", "QLED", "MINILED", "QNED", " " }));
+        comboResolucion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LED", "NANOCELL", "OLED", "QLED", "MINILED", "QNED" }));
         comboResolucion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboResolucionActionPerformed(evt);
@@ -102,7 +102,7 @@ public class RegistrarProyector extends javax.swing.JFrame {
 
         jLabel9.setText("TIPO DE USO:");
 
-        comboTipoUso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HOGAR", "EMPRESA", " " }));
+        comboTipoUso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HOGAR", "EMPRESA" }));
         comboTipoUso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboTipoUsoActionPerformed(evt);

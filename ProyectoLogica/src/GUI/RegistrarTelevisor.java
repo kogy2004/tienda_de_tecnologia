@@ -58,12 +58,17 @@ public class RegistrarTelevisor extends javax.swing.JFrame {
         jLabel3.setText("MARCA:");
 
         comboMarca.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SAMSUNG ", "LG", "KALLEY" }));
+        comboMarca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboMarcaActionPerformed(evt);
+            }
+        });
 
         jLabel4.setText("COLOR:");
 
         jLabel5.setText("RESOLUCION:");
 
-        comboResolucion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HD", "FULL HD", " " }));
+        comboResolucion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "HD", "FULL HD" }));
 
         jLabel6.setText("SISTEMA OPERATIVO:");
 
@@ -79,7 +84,7 @@ public class RegistrarTelevisor extends javax.swing.JFrame {
 
         jLabel9.setText("PULGADAS:");
 
-        comboPulgadas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10 A 32", "40 A 49", "50 A 59", "60 A 75", "76 O MAS", " " }));
+        comboPulgadas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10 A 32", "40 A 49", "50 A 59", "60 A 75", "76 O MAS" }));
 
         jLabel10.setText("CANTIDAD:");
 
@@ -98,7 +103,7 @@ public class RegistrarTelevisor extends javax.swing.JFrame {
 
         jLabel11.setText("TIPO PANTALLA:");
 
-        comboTipoPanta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LED", "NANOCELL", "OLED", "QLED", "MINILED", "QNED", " " }));
+        comboTipoPanta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "LED", "NANOCELL", "OLED", "QLED", "MINILED", "QNED" }));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -284,6 +289,10 @@ public class RegistrarTelevisor extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Precio o cantidad no válidos.");
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void comboMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboMarcaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboMarcaActionPerformed
 
     
 

@@ -27,15 +27,50 @@ public class GuiPrincipal extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
+        
+        // Menú de Registros
+        menuRegistros = new javax.swing.JMenu();
+        menuRegistros.setText("Registros");
+        
+        // Submenú de Productos
+        menuProductos = new javax.swing.JMenu();
+        menuProductos.setText("Productos");
+        
         registrarTelevisor = new javax.swing.JMenuItem();
-        registrarCliente = new javax.swing.JMenuItem();
+        registrarTelevisor.setText("Registrar Televisor");
+        menuProductos.add(registrarTelevisor);
+        
         registrarProyector = new javax.swing.JMenuItem();
-
+        registrarProyector.setText("Registrar Proyector");
+        menuProductos.add(registrarProyector);
+        
+        menuRegistros.add(menuProductos);
+        
+        // Opción de Clientes
+        registrarCliente = new javax.swing.JMenuItem();
+        registrarCliente.setText("Registrar Cliente");
+        menuRegistros.add(registrarCliente);
+        
+        // Menú de Ventas
+        menuVentas = new javax.swing.JMenu();
+        menuVentas.setText("Ventas");
+        
         registrarCompra = new javax.swing.JMenuItem();
-
-        jMenuItem2 = new javax.swing.JMenuItem();
-
+        registrarCompra.setText("Realizar Compra");
+        menuVentas.add(registrarCompra);
+        
+        // Menú de Informes
+        menuInformes = new javax.swing.JMenu();
+        menuInformes.setText("Informes");
+        
+        menuItemInformes = new javax.swing.JMenuItem();
+        menuItemInformes.setText("Ver Estadísticas");
+        menuInformes.add(menuItemInformes);
+        
+        // Agregar menús a la barra
+        jMenuBar1.add(menuRegistros);
+        jMenuBar1.add(menuVentas);
+        jMenuBar1.add(menuInformes);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -62,50 +97,36 @@ public class GuiPrincipal extends javax.swing.JFrame {
                 .addContainerGap(501, Short.MAX_VALUE))
         );
 
-        jMenu2.setText("Menu");
-
-        registrarTelevisor.setText(" Registrar Televisor");
-        registrarTelevisor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registrarTelevisorActionPerformed(evt);
-            }
-        });
-        jMenu2.add(registrarTelevisor);
-
-        registrarCliente.setText("Registrar Cliente");
+        // Agregar ActionListeners
         registrarCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registrarClienteActionPerformed(evt);
             }
         });
-        jMenu2.add(registrarCliente);
 
-        registrarProyector.setText(" Registrar Proyector");
+        registrarTelevisor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarTelevisorActionPerformed(evt);
+            }
+        });
+
         registrarProyector.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registrarProyectorActionPerformed(evt);
             }
         });
-        jMenu2.add(registrarProyector);
 
-        registrarCompra.setText(" Registrar Compra");
         registrarCompra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registrarCompraActionPerformed(evt);
             }
         });
-        jMenu2.add(registrarCompra);
 
-        jMenuItem2.setText("Datos Recolectados");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        menuItemInformes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                menuItemInformesActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem2);
-
-
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -138,17 +159,19 @@ public class GuiPrincipal extends javax.swing.JFrame {
     private void registrarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarCompraActionPerformed
         new RegistrarCompras(tienda).setVisible(true);
     }//GEN-LAST:event_registrarCompraActionPerformed
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        new DatosRecolectados().setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void menuItemInformesActionPerformed(java.awt.event.ActionEvent evt) {
+        new DatosRecolectados(tienda).setVisible(true);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenu menuRegistros;
+    private javax.swing.JMenu menuProductos;
+    private javax.swing.JMenu menuVentas;
+    private javax.swing.JMenu menuInformes;
+    private javax.swing.JMenuItem menuItemInformes;
     private javax.swing.JMenuItem registrarCliente;
     private javax.swing.JMenuItem registrarCompra;
     private javax.swing.JMenuItem registrarProyector;

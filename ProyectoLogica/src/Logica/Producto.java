@@ -45,7 +45,10 @@ public abstract class Producto {
     }
 
     public void setMarca(String marca) {
-        this.marca = marca;
+        // Asegurar que la primera letra sea mayúscula y el resto minúsculas
+        if (marca != null && !marca.isEmpty()) {
+            this.marca = marca.substring(0, 1).toUpperCase() + marca.substring(1).toLowerCase();
+        }
     }
 
     public String getColor() {

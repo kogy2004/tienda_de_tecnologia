@@ -38,13 +38,19 @@ public class Cliente {
     
     public boolean esCumpleanios(String fechaActual) {
         try {
-            // La fecha debe estar en formato DD/MM/YY
-            String[] partesNacimiento = this.fechaNacimiento.split("/");
-            String[] partesActual = fechaActual.split("/");
+            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("dd/MM/yyyy");
+            java.util.Date fechaNac = sdf.parse(this.fechaNacimiento);
+            java.util.Date fechaAct = sdf.parse(fechaActual);
+            
+            java.util.Calendar calNac = java.util.Calendar.getInstance();
+            java.util.Calendar calAct = java.util.Calendar.getInstance();
+            
+            calNac.setTime(fechaNac);
+            calAct.setTime(fechaAct);
             
             // Comparamos solo el día y el mes
-            return partesNacimiento[0].equals(partesActual[0]) && 
-                   partesNacimiento[1].equals(partesActual[1]);
+            return calNac.get(java.util.Calendar.DAY_OF_MONTH) == calAct.get(java.util.Calendar.DAY_OF_MONTH) && 
+                   calNac.get(java.util.Calendar.MONTH) == calAct.get(java.util.Calendar.MONTH);
         } catch (Exception e) {
             // Si hay algún error en el formato de las fechas, retornamos falso
             return false;

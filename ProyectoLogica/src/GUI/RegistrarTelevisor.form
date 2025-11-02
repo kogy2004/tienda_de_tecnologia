@@ -219,6 +219,9 @@
               </StringArray>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboMarcaActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -238,10 +241,9 @@
         <Component class="javax.swing.JComboBox" name="comboResolucion">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="3">
+              <StringArray count="2">
                 <StringItem index="0" value="HD"/>
                 <StringItem index="1" value="FULL HD"/>
-                <StringItem index="2" value=" "/>
               </StringArray>
             </Property>
           </Properties>
@@ -288,13 +290,12 @@
         <Component class="javax.swing.JComboBox" name="comboPulgadas">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="6">
+              <StringArray count="5">
                 <StringItem index="0" value="10 A 32"/>
                 <StringItem index="1" value="40 A 49"/>
                 <StringItem index="2" value="50 A 59"/>
                 <StringItem index="3" value="60 A 75"/>
                 <StringItem index="4" value="76 O MAS"/>
-                <StringItem index="5" value=" "/>
               </StringArray>
             </Property>
           </Properties>
@@ -328,14 +329,13 @@
         <Component class="javax.swing.JComboBox" name="comboTipoPanta">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="7">
+              <StringArray count="6">
                 <StringItem index="0" value="LED"/>
                 <StringItem index="1" value="NANOCELL"/>
                 <StringItem index="2" value="OLED"/>
                 <StringItem index="3" value="QLED"/>
                 <StringItem index="4" value="MINILED"/>
                 <StringItem index="5" value="QNED"/>
-                <StringItem index="6" value=" "/>
               </StringArray>
             </Property>
           </Properties>
