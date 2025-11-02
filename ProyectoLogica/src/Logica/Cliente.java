@@ -1,9 +1,16 @@
 package Logica;
 
+/**
+ * Clase que representa un cliente de la tienda.
+ * Gestiona la información personal y maneja descuentos por cumpleaños.
+ */
 public class Cliente {
 
-    private String documento ;
+    /** Número de documento de identidad del cliente */
+    private String documento;
+    /** Nombre completo del cliente */
     private String nombre;
+    /** Fecha de nacimiento en formato dd/MM/yyyy */
     private String fechaNacimiento;
 
     public Cliente(String documento, String nombre, String fechaNacimiento) {

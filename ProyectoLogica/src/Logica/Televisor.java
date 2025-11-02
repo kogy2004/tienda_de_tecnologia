@@ -1,9 +1,16 @@
 package Logica;
 
+/**
+ * Clase que representa un televisor en la tienda.
+ * Extiende de la clase Producto e incluye atributos específicos de televisores.
+ */
 public class Televisor extends Producto {
 
+    /** Tamaño de la pantalla del televisor (rango: 10-32", 40-49", 50-59", 60-75", 76"+) */
     private String tamanioPantalla;
+    /** Tipo de pantalla (LED, NanoCell, OLED, QLED, MiniLED, QNED) */
     private String tipoPantalla;
+    /** Sistema operativo del Smart TV (Android TV, Google TV, Tizen, Web OS, Roku TV) */
     private String sistemaOperativo;
 
     public Televisor() {

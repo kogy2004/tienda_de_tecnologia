@@ -1,7 +1,6 @@
 
 package GUI;
 
-
 import Logica.Tienda;
 import javax.swing.*;
 import java.awt.event.*;
@@ -10,6 +9,17 @@ import java.util.*;
 import java.text.*;
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * Ventana principal del sistema de gestión de tienda.
+ * Proporciona acceso a todas las funcionalidades del sistema mediante un menú.
+ * 
+ * Características:
+ * - Registro de productos (Televisores y Proyectores)
+ * - Gestión de clientes
+ * - Registro de compras
+ * - Visualización de estadísticas
+ * - Generación de gráficos
+ */
 public class GuiPrincipal extends javax.swing.JFrame {
    private Tienda tienda = new Tienda();
    

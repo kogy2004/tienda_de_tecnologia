@@ -1,13 +1,23 @@
 package Logica;
 
-
+/**
+ * Clase abstracta que representa un producto genérico en la tienda.
+ * Sirve como base para productos específicos como Televisores y Proyectores.
+ */
 public abstract class Producto {
+    /** Código único del producto */
     protected String codigo;
+    /** Referencia o modelo del producto */
     protected String referencia;
+    /** Marca del producto */
     protected String marca;
+    /** Color del producto */
     protected String color;
+    /** Resolución del dispositivo */
     protected String resolucion;
+    /** Precio de venta del producto */
     protected double precio;
+    /** Cantidad disponible en inventario */
     protected int cantidadDisponible;
 
 
