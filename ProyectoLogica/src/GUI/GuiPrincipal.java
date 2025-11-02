@@ -67,6 +67,10 @@ public class GuiPrincipal extends javax.swing.JFrame {
         menuItemInformes.setText("Ver Estadísticas");
         menuInformes.add(menuItemInformes);
         
+        menuItemGraficos = new javax.swing.JMenuItem();
+        menuItemGraficos.setText("Ver Gráficos");
+        menuInformes.add(menuItemGraficos);
+        
         // Agregar menús a la barra
         jMenuBar1.add(menuRegistros);
         jMenuBar1.add(menuVentas);
@@ -128,6 +132,12 @@ public class GuiPrincipal extends javax.swing.JFrame {
             }
         });
 
+        menuItemGraficos.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mostrarGraficosActionPerformed(evt);
+            }
+         });
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -159,9 +169,14 @@ public class GuiPrincipal extends javax.swing.JFrame {
     private void registrarCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarCompraActionPerformed
         new RegistrarCompras(tienda).setVisible(true);
     }//GEN-LAST:event_registrarCompraActionPerformed
-    private void menuItemInformesActionPerformed(java.awt.event.ActionEvent evt) {
+
+    private void menuItemInformesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemInformesActionPerformed
         new DatosRecolectados(tienda).setVisible(true);
-    }
+    }//GEN-LAST:event_menuItemInformesActionPerformed
+
+    private void mostrarGraficosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrarGraficosActionPerformed
+        new GraficosEstadisticos(tienda).setVisible(true);
+    }//GEN-LAST:event_mostrarGraficosActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -172,6 +187,7 @@ public class GuiPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu menuVentas;
     private javax.swing.JMenu menuInformes;
     private javax.swing.JMenuItem menuItemInformes;
+    private javax.swing.JMenuItem menuItemGraficos;
     private javax.swing.JMenuItem registrarCliente;
     private javax.swing.JMenuItem registrarCompra;
     private javax.swing.JMenuItem registrarProyector;
